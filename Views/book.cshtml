@@ -1,0 +1,14 @@
+@model CarRentalSystem.Models.Car
+@{
+    ViewBag.Title = "Book Car";
+}
+
+<h2>Book @Model.Make @Model.Model</h2>
+
+<form method="post">
+    <label>Customer Name:</label>
+    <input type="text" name="customerName" required />
+    <br /><br />
+    <button type="submit">Confirm Booking</button>
+</form>
+
