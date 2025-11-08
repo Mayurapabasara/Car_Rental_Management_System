@@ -1,0 +1,37 @@
+@model List<CarRentalSystem.Models.Car>
+@{
+    ViewBag.Title = "Available Cars";
+}
+
+<h2>Available Cars</h2>
+
+@if (TempData["Message"] != null)
+{
+    <p style="color: green">@TempData["Message"]</p>
+}
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Availability</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>@car.Make</td>
+            <td>@car.Model</td>
+            <td>@car.Year</td>
+            <td>@(car.IsAvailable ? "Available" : "Booked")</td>
+            <td>
+                @if (car.IsAvailable)
+                {
+                    <a href="@Url.Action("Book", "Home", new { id = car.Id })">Book</a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
